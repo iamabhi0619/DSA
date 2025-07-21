@@ -1,33 +1,36 @@
-public class QuickSort {
 
-    static int partition(int arr[], int low, int high) {
-        int pivot = arr[low];
-        int i = low;
-        int j = high;
+import java.util.Arrays;
 
-        while (i < j) {
-            while (i <= high && arr[i] <= pivot)
-                i++;
-            while (j >= low && arr[j] > pivot)
-                j--;
-            if (i < j) {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+public class CountShort {
+
+    static void count(int arr[]) {
+        int n = arr.length;
+        if (n == 0)
+            return;
+
+        int max = Arrays.stream(arr).max().orElse(Integer.MIN_VALUE);
+        int min = Arrays.stream(arr).min().orElse(Integer.MAX_VALUE);
+        int range = max - min + 1;
+
+        int[] count = new int[range];
+        int[] res = new int[n];
+
+        // frequency array
+        for (int num : arr) {
+            count[num - min]++;
         }
-        int temp = arr[low];
-        arr[low] = arr[j];
-        arr[j] = temp;
-        return j;
-    }
 
-    static void quickSort(int arr[], int low, int high) {
-        if (low < high) {
-            int p = partition(arr, low, high);
-            quickSort(arr, low, p - 1);
-            quickSort(arr, p + 1, high);
+        // coumaltive frequency array
+        for (int i = 1; i < range; i++) {
+            count[i] += count[i - 1];
         }
+
+        for (int i = n - 1; i >= 0; i--) {
+            res[count[arr[i] - min] - 1] = arr[i];
+            count[arr[i] - min]--;
+        }
+
+        System.arraycopy(res, 0, arr, 0, n);
     }
 
     public static void main(String[] args) {
@@ -48,7 +51,7 @@ public class QuickSort {
 
         long startTime = System.nanoTime();
 
-        quickSort(arr, 0, arr.length - 1);
+        count(arr);
 
         long endTime = System.nanoTime();
 

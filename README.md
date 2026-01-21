@@ -1,6 +1,6 @@
 # Data Structures and Algorithms
 
-A collection of fundamental data structures and algorithms implemented in **Java** and **C++** for learning and interview preparation.
+This is my personal repository where I learn and practice Data Structures and Algorithms. It contains implementations of fundamental DSA concepts in **Java** and **C++** for learning and interview preparation.
 
 ## 📂 Repository Structure
 
@@ -75,12 +75,13 @@ int main() {
 - **Educational Focus**: Clear variable names and structure
 - **Interview Ready**: Common coding interview problems
 
-## 🎯 Use Cases
+## 🎯 About This Repository
 
-- **Interview Preparation**: Practice fundamental algorithms
-- **Academic Learning**: Understand data structure concepts
-- **Competitive Programming**: Reference implementations
-- **Code Review**: Study different approaches to same problems
+This repository serves as my learning journal for mastering Data Structures and Algorithms. Here I:
+- Practice fundamental algorithms and data structures
+- Solve LeetCode and other coding problems
+- Prepare for technical interviews
+- Experiment with different implementation approaches
 
 ## 🤝 Contributing
 

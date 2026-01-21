@@ -44,7 +44,7 @@ public class RabinKarp {
         long startTime = System.nanoTime();
         List<Integer> match = rollingHash(str, pattern);
         long endTime = System.nanoTime();
-        System.out.println("Pattern found at indexs: " + match);
+        System.out.println("Pattern found at indexes: " + match);
         System.out.println("Execution time: " + (endTime - startTime) + " ns");
     }
 }

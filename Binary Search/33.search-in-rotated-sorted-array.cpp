@@ -16,7 +16,7 @@ public:
         int end = nums.size() - 1;
         while (start <= end)
         {
-            int mid = start + (end - start) / 2;
+            int mid = start + (end - start) / 2; // finding mid to avoid overflow
             if (nums[mid] == target)
                 return mid;
 

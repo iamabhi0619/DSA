@@ -1,0 +1,26 @@
+import java.util.*;
+
+class Solution {
+    static ArrayList<Integer> preGreaterEle(int[] arr) {
+        int n = arr.length;
+        int[] res = new int[n];
+        Stack<Integer> s = new Stack<>();
+
+        for (int i = 0; i < n; i++) {
+            while (!s.isEmpty() && arr[i] >= s.peek())
+                s.pop();
+
+            if (!s.isEmpty())
+                res[i] = s.peek();
+            else
+                res[i] = -1;
+
+            s.push(arr[i]);
+        }
+        ArrayList<Integer> temp = new ArrayList<>();
+        for (int a : res) {
+            temp.add(a);
+        }
+        return temp;
+    }
+}

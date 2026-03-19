@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=104 lang=java
+ * @lc app=leetcode id=222 lang=java
  *
- * [104] Maximum Depth of Binary Tree
+ * [222] Count Complete Tree Nodes
  */
 
 // @lc code=start
@@ -21,17 +21,30 @@
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
+    public int countNodes(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.left == null && root.right == null)
-            return 1;
         int left = 0;
         int right = 0;
         if (root.left != null)
-            left = maxDepth(root.left);
+            left = countNodes(root.left);
         if (root.right != null)
-            right = maxDepth(root.right);
+            right = countNodes(root.right);
+        return 1 + left + right;
+    }
+
+    int height(TreeNode root) {
+        if (root == null)
+            return 0;
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        int left = 0;
+        int right = 0;
+        if (root.left != null)
+            left = height(root.left);
+        if (root.right != null)
+            right = height(root.right);
         return 1 + Math.max(left, right);
     }
 }

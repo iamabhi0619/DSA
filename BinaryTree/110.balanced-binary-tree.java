@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=104 lang=java
+ * @lc app=leetcode id=110 lang=java
  *
- * [104] Maximum Depth of Binary Tree
+ * [110] Balanced Binary Tree
  */
 
 // @lc code=start
@@ -21,17 +21,30 @@
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
+    public boolean isBalanced(TreeNode root) {
+        return heightCheck(root) != -1;
+    }
+
+    int heightCheck(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.left == null && root.right == null)
+        if (root.left == null && root.right == null) {
             return 1;
+        }
         int left = 0;
         int right = 0;
         if (root.left != null)
-            left = maxDepth(root.left);
+            left = heightCheck(root.left);
+        if (left == -1)
+            return -1;
         if (root.right != null)
-            right = maxDepth(root.right);
+            right = heightCheck(root.right);
+        if (right == -1)
+            return -1;
+
+        if (Math.abs(left - right) > 1)
+            return -1;
+
         return 1 + Math.max(left, right);
     }
 }

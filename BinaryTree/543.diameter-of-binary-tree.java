@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=104 lang=java
+ * @lc app=leetcode id=543 lang=java
  *
- * [104] Maximum Depth of Binary Tree
+ * [543] Diameter of Binary Tree
  */
 
 // @lc code=start
@@ -21,7 +21,14 @@
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
+    int res = 0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        height(root);
+        return res;
+    }
+
+    public int height(TreeNode root) {
         if (root == null)
             return 0;
         if (root.left == null && root.right == null)
@@ -29,9 +36,10 @@ class Solution {
         int left = 0;
         int right = 0;
         if (root.left != null)
-            left = maxDepth(root.left);
+            left = height(root.left);
         if (root.right != null)
-            right = maxDepth(root.right);
+            right = height(root.right);
+        res = Math.max(res, left + right);
         return 1 + Math.max(left, right);
     }
 }

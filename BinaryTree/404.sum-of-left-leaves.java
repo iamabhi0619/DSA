@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=104 lang=java
+ * @lc app=leetcode id=404 lang=java
  *
- * [104] Maximum Depth of Binary Tree
+ * [404] Sum of Left Leaves
  */
 
 // @lc code=start
@@ -21,18 +21,14 @@
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
+    public int sumOfLeftLeaves(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.left == null && root.right == null)
-            return 1;
         int left = 0;
-        int right = 0;
-        if (root.left != null)
-            left = maxDepth(root.left);
-        if (root.right != null)
-            right = maxDepth(root.right);
-        return 1 + Math.max(left, right);
+        if (root.left != null && root.left.left == null && root.left.right == null) {
+            left = root.left.val;
+        }
+        return left + sumOfLeftLeaves(root.right) + sumOfLeftLeaves(root.left);
     }
 }
 // @lc code=end
